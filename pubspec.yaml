@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   go_router: ^16.2.0
+  get: ^4.7.2
 
 dev_dependencies:
   flutter_test:
@@ -53,7 +54,24 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-   - assets/
+   - assets/darth_vader_16bit.png
+   - assets/burger.png
+   - assets/base/0.png
+   - assets/base/1.png
+   - assets/base/2.png
+   - assets/base/3.png
+   - assets/base/4.png
+   - assets/base/5.png
+   - assets/base/6.png
+   - assets/base/background.png
+   - assets/futurista/0.png
+   - assets/futurista/1.png
+   - assets/futurista/2.png
+   - assets/futurista/3.png
+   - assets/futurista/4.png
+   - assets/futurista/5.png
+   - assets/futurista/6.png
+   - assets/futurista/background.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

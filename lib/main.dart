@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+import 'package:myapp/settings_controller.dart';
 import 'juego_page.dart';
 import 'configuracion_page.dart';
 import 'informacion_page.dart';
 
-void main() {  
+void main() {
+  Get.put(SettingsController());
   runApp(const MyApp());
 }
 
@@ -16,17 +19,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final GoRouter router = GoRouter(
       routes: [
-        GoRoute(path: '/', builder: (context, state) => const MyHomePage(title: 'Juego del Ahorcado')),
+        GoRoute(
+          path: '/',
+          builder: (context, state) =>
+              const MyHomePage(title: 'Juego del Ahorcado'),
+        ),
         GoRoute(path: '/juego', builder: (context, state) => const JuegoPage()),
-        GoRoute(path: '/configuracion', builder: (context, state) => const ConfiguracionPage()),
-        GoRoute(path: '/informacion', builder: (context, state) => const InformacionPage()),
+        GoRoute(
+          path: '/configuracion',
+          builder: (context, state) => ConfiguracionPage(),
+        ),
+        GoRoute(
+          path: '/informacion',
+          builder: (context, state) => const InformacionPage(),
+        ),
       ],
     );
     return MaterialApp.router(
       routerConfig: router,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
-      )
+      ),
     );
   }
 }
@@ -52,7 +65,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  // ignore: unused_element
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -72,11 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-        // change color while the other colors stay the same.
+    // change color while the other colors stay the same.
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
- // Here we take the value from the MyHomePage object that was created by
+        // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
@@ -139,7 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
               title: const Text('Información'),
               onTap: () {
                 context.go('/informacion');
-              }),
+              },
+            ),
           ],
         ),
       ),

@@ -23,7 +23,7 @@ class InformacionPage extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('burger.png', width: 100),
+                    Image.asset('assets/burger.png', width: 100),
                   ],
                 ),
                 const Column(
