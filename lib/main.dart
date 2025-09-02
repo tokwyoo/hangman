@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:get/get.dart';
-import 'package:myapp/settings_controller.dart';
 import 'juego_page.dart';
 import 'configuracion_page.dart';
 import 'informacion_page.dart';
+import 'settings_controller.dart';
 
 void main() {
   Get.put(SettingsController());
@@ -17,29 +17,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final GoRouter router = GoRouter(
+    final GoRouter _router = GoRouter(
       routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) =>
-              const MyHomePage(title: 'Juego del Ahorcado'),
-        ),
+        GoRoute(path: '/', builder: (context, state) => const MyHomePage(title: 'Juego del Ahorcado')),
         GoRoute(path: '/juego', builder: (context, state) => const JuegoPage()),
-        GoRoute(
-          path: '/configuracion',
-          builder: (context, state) => ConfiguracionPage(),
-        ),
-        GoRoute(
-          path: '/informacion',
-          builder: (context, state) => const InformacionPage(),
-        ),
+        GoRoute(path: '/configuracion', builder: (context, state) =>  ConfiguracionPage()),
+        GoRoute(path: '/informacion', builder: (context, state) => const InformacionPage()),
       ],
     );
     return MaterialApp.router(
-      routerConfig: router,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
-      ),
+        routerConfig: _router,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
+        )
     );
   }
 }
@@ -111,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Bienvenidos/as al Juego del Ahorcado:'),
+            const Text('Bienvenidos/as al juego del Ahorcado'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -148,11 +138,10 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             ListTile(
-              title: const Text('Información'),
-              onTap: () {
-                context.go('/informacion');
-              },
-            ),
+                title: const Text('Información'),
+                onTap: () {
+                  context.go('/informacion');
+                }),
           ],
         ),
       ),
