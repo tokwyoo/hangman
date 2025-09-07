@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'settings_controller.dart';
 
-List<String> imagenes = ['./../assets/base/background.png','./../assets/futurista/background.png'];
+List<String> imagenes = [
+  './../assets/base/background.png',
+  './../assets/futurista/background.png',
+  './../assets/lobito/background.png',
+  './../assets/hello_kitty/background.png',
+  './../assets/kirby/background.png'];
 
 class ConfiguracionPage extends StatefulWidget {
   ConfiguracionPage({super.key});
@@ -55,8 +60,16 @@ class _ConfiguracionPageState extends State<ConfiguracionPage> {
                     child: Text('Futurista'),
                   ),
                   DropdownMenuItem<TemaJuego>(
-                    value: TemaJuego.terror,
-                    child: Text('Terror'),
+                    value: TemaJuego.lobito,
+                    child: Text('Lobito'),
+                  ),
+                  DropdownMenuItem<TemaJuego>(
+                    value: TemaJuego.hello_kitty,
+                    child: Text('Hello Kitty'),
+                  ),
+                  DropdownMenuItem<TemaJuego>(
+                    value: TemaJuego.kirby,
+                    child: Text('Kirby'),
                   ),
                 ],
               ),

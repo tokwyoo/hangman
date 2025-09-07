@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     final GoRouter _router = GoRouter(
       routes: [
         GoRoute(path: '/', builder: (context, state) => const MyHomePage(title: 'Juego del Ahorcado')),
-        GoRoute(path: '/juego', builder: (context, state) => const JuegoPage()),
+        GoRoute(path: '/juego', builder: (context, state) => JuegoPage()),
         GoRoute(path: '/configuracion', builder: (context, state) =>  ConfiguracionPage()),
         GoRoute(path: '/informacion', builder: (context, state) => const InformacionPage()),
       ],

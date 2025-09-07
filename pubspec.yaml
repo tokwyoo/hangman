@@ -72,6 +72,31 @@ flutter:
    - assets/futurista/5.png
    - assets/futurista/6.png
    - assets/futurista/background.png
+   - assets/lobito/0.png
+   - assets/lobito/1.png
+   - assets/lobito/2.png
+   - assets/lobito/3.png
+   - assets/lobito/4.png
+   - assets/lobito/5.png
+   - assets/lobito/6.png
+   - assets/lobito/background.png
+   - assets/hello_kitty/0.png
+   - assets/hello_kitty/1.png
+   - assets/hello_kitty/2.png
+   - assets/hello_kitty/3.png
+   - assets/hello_kitty/4.png
+   - assets/hello_kitty/5.png
+   - assets/hello_kitty/6.png
+   - assets/hello_kitty/background.png
+   - assets/kirby/0.png
+   - assets/kirby/1.png
+   - assets/kirby/2.png
+   - assets/kirby/3.png
+   - assets/kirby/4.png
+   - assets/kirby/5.png
+   - assets/kirby/6.png
+   - assets/kirby/background.png
+   - assets/palabras.txt
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
