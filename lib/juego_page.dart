@@ -32,7 +32,10 @@ class _JuegoPageState extends State<JuegoPage> {
   Future<void> _cargaPalabras() async {
     final String contenido = await rootBundle.loadString(archivoPalabras);
     setState(() {
-      palabras = contenido.split('\n');
+      //linea del profe:
+      //palabras = contenido.split('\n');
+      //linea mía:
+      palabras = contenido.split('\n').map((palabra) => palabra.trim()).toList();
     });
   }
 
