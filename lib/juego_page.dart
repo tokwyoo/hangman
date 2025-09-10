@@ -15,6 +15,7 @@ class JuegoPage extends StatefulWidget {
 }
 
 class _JuegoPageState extends State<JuegoPage> {
+  final TextEditingController _controller = TextEditingController();
   String archivoPalabras = 'assets/palabras.txt';
   List<String> palabras = [];
   String _palabra = "";
@@ -22,6 +23,8 @@ class _JuegoPageState extends State<JuegoPage> {
   int idxpalabra = 0;
   int _intentos = 0;
   final Random _random = Random();
+  String abecedario = "abcdefghijklmnñopqrstuvwxyz";
+  String abc="";
 
   @override
   void initState() {
@@ -51,14 +54,29 @@ class _JuegoPageState extends State<JuegoPage> {
     });
   }
 
+  void _enviar() {
+    String input = _controller.text.toLowerCase();
+    if (input.isEmpty){
+      return;
+    }
+    if (input.length == 1){ // input es una letra
+      String letra = input.toLowerCase();
+    } else { // input es una palabra
+
+    }
+  }
+
   void _nuevoJuego() {
     setState(() {});
     idxpalabra = _random.nextInt(palabras.length);
+    abc = abecedario;
     _intentos = 0;
     _setEspacios();
   }
 
+  @override
   Widget build(BuildContext context) {
+    bool isGameActive = _espacios.isNotEmpty;
     return Scaffold(
       appBar: AppBar(title: const Text('Juego'), centerTitle: true),
       body: Center(
@@ -66,7 +84,7 @@ class _JuegoPageState extends State<JuegoPage> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text('ABC......')],
+              children: [Text(abc)],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -99,6 +117,29 @@ class _JuegoPageState extends State<JuegoPage> {
                 //Text('_ _ _ _ _ _')
                 Text(_espacios),
                 Text(_palabra),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: TextField(
+                    controller: _controller,
+                    enabled: isGameActive,
+                    decoration: InputDecoration(
+                      labelText: 'Adivina la palabra',
+                      hintText: 'Letra o palabra',
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.text,
+                    autofocus: true,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: isGameActive ? _enviar: null,
+                  child: const Text('Enviar'),
+                ),
               ],
             ),
             Row(
