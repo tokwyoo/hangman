@@ -97,6 +97,7 @@ flutter:
    - assets/kirby/6.png
    - assets/kirby/background.png
    - assets/palabras.txt
+   - assets/game_background_1200.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

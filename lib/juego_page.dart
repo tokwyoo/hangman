@@ -60,41 +60,71 @@ class _JuegoPageState extends State<JuegoPage> {
       return;
     }
     setState(() {
-
       if (input.length == 1) {
-        //input es una letra
+        // input is a letter
         if (abc.contains(input)) {
           abc = abc.replaceAll(input, '*');
           if (_palabra.contains(input)) {
             String newEspacios = '';
             for (int i = 0; i < _palabra.length; i++) {
               if (_palabra[i] == input) {
-                newEspacios += input + ' '; // '$input '
+                newEspacios += input + ' ';
               } else {
-                newEspacios += _espacios[i * 2] + ' '; // '$_espacios[i*2] '
+                newEspacios += _espacios[i * 2] + ' ';
               }
-
             }
-            _espacios = newEspacios; // va fuera del ciclo
+            _espacios = newEspacios;
+            if (!_espacios.contains('_')) {
+              _showDialog("¡Ganaste!", "¡Felicidades, adivinaste la palabra!");
+            }
           } else {
-            // usuario no atino a la letra
             _intentos++;
           }
         }
       } else {
-        //input es una palabra
+        // input is a word
         if (input == _palabra) {
-          for (int i = 0; i < _palabra.length; i++) {
-            _espacios = '$_palabra[i] '; //_palabra[i] + ' ';
-          }
-          print("Ganaste!");
+          _espacios = _palabra.split('').join(' ');
+          _showDialog("¡Ganaste!", "¡Felicidades, adivinaste la palabra!");
         } else {
-          // usuario no atino a la palabra
           _intentos++;
         }
       }
+      if (_intentos >= 6) {
+        _showDialog("¡Perdiste!", "La palabra era: $_palabra");
+      }
       _controller.clear();
     });
+  }
+
+  void _showDialog(String title, String content) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                title,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Text(content),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                child: const Text('Jugar de nuevo'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _nuevoJuego();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   void _nuevoJuego() {
